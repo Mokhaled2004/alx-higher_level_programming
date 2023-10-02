@@ -1,22 +1,31 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * check_cycle - checks if list is cyclical
- * @list: pointer to list ti check
- * Return: 1 if cyclic, 0 otherwise
+ * check_cycle - check for loop in LL
+ * @list: head of linked list
+ *
+ * Description - check for loops in LL
+ * Return: 1 if cycled, 0 if not
  */
+
 int check_cycle(listint_t *list)
 {
-	list_t *slow = list, *fast = list;
+	listint_t *slow, *fast;
 
-	while (fast && fast->next)
+	if (!list)
 	{
+		return (0);
+	}
+	slow = list;
+	fast = list->next;
+	while (fast && slow && fast->next)
+	{
+		if (slow == fast)
+		{
+			return (1);
+		}
 		slow = slow->next;
 		fast = fast->next->next;
-		if (slow == fast)
-			return (1);
 	}
-	return(0);
-}	
+	return (0);
+}
