@@ -1,28 +1,31 @@
 #include "lists.h"
 
 /**
- * check_cycle - fds
- * @list: fds
+ * check_cycle - check for loop in LL
+ * @list: head of linked list
  *
- * Return: 1 if success, 0 otherwise
+ * Description - check for loops in LL
+ * Return: 1 if cycled, 0 if not
  */
+
 int check_cycle(listint_t *list)
 {
-	listint_t *slow = list;
-	listint_t *fast = list;
+	listint_t *slow, *fast;
 
 	if (!list)
-		return (0);
-
-	while (slow && fast && fast->next)
 	{
+		return (0);
+	}
+	slow = list;
+	fast = list->next;
+	while (fast && slow && fast->next)
+	{
+		if (slow == fast)
+		{
+			return (1);
+		}
 		slow = slow->next;
 		fast = fast->next->next;
-		if (slow == fast)
-			return (1);
 	}
-
 	return (0);
-
-
 }
