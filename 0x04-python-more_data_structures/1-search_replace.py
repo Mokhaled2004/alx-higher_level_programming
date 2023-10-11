@@ -2,7 +2,10 @@
 
 
 def search_replace(my_list, search, replace):
-    
+    """
+    A function that replaces all occurrences
+    of an element by another element
+    """
     new_list = []
     for element in my_list:
         if element == search:
